@@ -13,6 +13,8 @@ import location_icon from "../assets/location_icon.png";
 import message_icon from "../assets/message_icon.png";
 import phone_icon from "../assets/phone_icon.png";
 import Newsletter from "../assets/Newsletter.png";
+import color_location_icon from "../assets/color_location_icon.png";
+import color_message_icon from "../assets/color_message_icon.png";
 
 const Homepage = () => {
 
@@ -25,6 +27,53 @@ const Homepage = () => {
 
 	return (
 		<div>
+			<section className="nav_extension">
+				<div className="container">
+					<div className="navleft_ext">
+						<div className="navext_contents">
+							<img
+								src={color_location_icon}
+								alt="colored location icon"
+								className="asset_icon"
+							/>
+							<p className="navext_text">9ijakids lane, Lagos</p>
+						</div>
+						<div className="navext_contents">
+							<img
+								src={color_message_icon}
+								alt="colored message Icon"
+								className="asset_icon"
+							/>
+							<p className="navext_text">9ijakids@test.com</p>
+						</div>
+					</div>
+					<div className="navright_ext">
+						<div className="ext_right">
+							<img
+								src={facebook_icon}
+								alt="facebook social"
+								className="fb_icon social_icon"
+							/>
+							<img
+								src={pinterest_icon}
+								alt="pinterest"
+								className="asset_icon social_icon"
+							/>
+							<img
+								src={twitter_icon}
+								alt="twitter social"
+								className="asset_icon social_icon"
+							/>
+							<img
+								src={instagram_icon}
+								alt="instagram social"
+								className="asset_icon social_icon"
+							/>
+						</div>
+					</div>
+				</div>
+			</section>
+
 			<section className="nav_section">
 				<div className="container main_nav">
 					<div className="main_logo">
@@ -37,7 +86,7 @@ const Homepage = () => {
 					<div className="menu_content">
 						<MenuOutlined className="menu_icon" onClick={showMenu} />
 					</div>
-					<div className={active ? 'right_nav active' : 'right_nav'}>
+					<div className={active ? "right_nav active" : "right_nav"}>
 						<ul>
 							<div className="closed_content">
 								<Close className="closed_icon" onClick={showMenu} />
@@ -62,7 +111,7 @@ const Homepage = () => {
 									Competition
 								</Link>
 							</li>
-							<li>
+							<li className="nav_signup">
 								<Link to="/">
 									<button className="signup_button">Register</button>
 								</Link>
@@ -144,28 +193,40 @@ const Homepage = () => {
 				</div>
 			</section>
 			<section className="section_four">
-				<div className="container">
-					<div>
-						<div>
-							<img src={book_foot} alt="footer logo" />
-							<p>9IJAKIDS</p>
+				<div className="container top_footer">
+					<div className="left_footer">
+						<div className="left_contents">
+							<img src={book_foot} alt="footer logo" className="foot_icons" />
+							<p className="logo_text">9IJAKIDS</p>
 						</div>
-						<div>
-							<img src={location_icon} alt="location" />
-							<p>9ijakids lane</p>
+						<div className="left_contents">
+							<img
+								src={location_icon}
+								alt="location"
+								className="asset_icon foot_icons"
+							/>
+							<p className="foot_text">9ijakids lane</p>
 						</div>
-						<div>
-							<img src={message_icon} alt="emails" />
-							<p>9ijakids@test.com</p>
+						<div className="left_contents">
+							<img
+								src={message_icon}
+								alt="emails"
+								className="asset_icon foot_icons"
+							/>
+							<p className="foot_text">9ijakids@test.com</p>
 						</div>
-						<div>
-							<img src={phone_icon} alt="phone calls" />
-							<p>phone 9ijakids</p>
+						<div className="left_contents">
+							<img
+								src={phone_icon}
+								alt="phone calls"
+								className="asset_icon foot_icons"
+							/>
+							<p className="foot_text">phone 9ijakids</p>
 						</div>
 					</div>
-					<div>
+					<div className="right_footer">
 						<div>
-							<p>Community</p>
+							<p className="foot_head">Community</p>
 							<li className="foot_link">
 								<Link to="/" className="foot_text">
 									Learners
@@ -208,7 +269,7 @@ const Homepage = () => {
 							</li>
 						</div>
 						<div>
-							<p>Informations</p>
+							<p className="foot_head">Informations</p>
 							<li className="foot_link">
 								<Link to="/" className="foot_text">
 									About
@@ -236,7 +297,7 @@ const Homepage = () => {
 							</li>
 						</div>
 						<div>
-							<p>More</p>
+							<p className="foot_head">More</p>
 							<li className="foot_link">
 								<Link to="/" className="foot_text">
 									Press
@@ -290,20 +351,36 @@ const Homepage = () => {
 						</div>
 					</div>
 				</div>
+				<div className="container foot_extension">
+					<div className="ext_left">
+						<p className="ext_text">test</p>
+						<p className="ext_text">test</p>
+						<p className="ext_text">test</p>
+					</div>
+					<div className="ext_right">
+						<img
+							src={facebook_icon}
+							alt="facebook social"
+							className="fb_icon social_icon"
+						/>
+						<img
+							src={pinterest_icon}
+							alt="pinterest"
+							className="asset_icon social_icon"
+						/>
+						<img
+							src={twitter_icon}
+							alt="twitter social"
+							className="asset_icon social_icon"
+						/>
+						<img
+							src={instagram_icon}
+							alt="instagram social"
+							className="asset_icon social_icon"
+						/>
+					</div>
+				</div>
 			</section>
-			<div className="container">
-				<div>
-					<p>test</p>
-					<p>test</p>
-					<p>test</p>
-				</div>
-				<div>
-					<img src={facebook_icon} alt="facebook social" />
-					<img src={pinterest_icon} alt="pinterest" />
-					<img src={twitter_icon} alt="twitter social" />
-					<img src={instagram_icon} alt="instagram social" />
-				</div>
-			</div>
 		</div>
 	);
 };

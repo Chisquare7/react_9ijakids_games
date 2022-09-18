@@ -14,6 +14,14 @@ img {
   max-width: 100%;
 }
 
+.asset_icon {
+  width: .7rem;
+}
+
+.fb_icon {
+  width: .35rem;
+}
+
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Noto Serif Georgian';
   color: #002147;
@@ -24,9 +32,32 @@ p, button {
   color: #002147;
 }
 
+
+
+/* Styling of the Top Navigation Extension */
+
+.nav_extension {
+  display: none;
+  background: #FDC800;
+}
+
+.navleft_ext .navext_contents {
+  display: flex;
+}
+
+.navleft_ext .navext_contents .navext_text {
+  font-size: .6rem;
+  color: #212529;
+  font-weight: 500;
+  margin-left: .5em;
+}
+
+
+
+/* Styling of the main Navigation Section */
+
 .nav_section {
   background: #F0F4F9;
-  /* padding-bottom: 6em; */
 }
 
 .main_nav {
@@ -37,8 +68,7 @@ p, button {
 .main_logo {
   display: flex;
   align-items: center;
-  padding-left: .5em;
-  
+  padding-left: .5em; 
 }
 
 .main_logo .page_logo {
@@ -73,7 +103,17 @@ p, button {
   color: #002147;
   font-weight: 700;
   font-family: 'Inter', sans-serif;
-  font-size: .9rem;
+  font-size: .8rem;
+}
+
+.nav_signup .signup_button {
+  background: #002147;
+  border: none;
+  color: #FDC800;
+  border-radius: 4px;
+  padding: .5em 1.5em;
+  font-size: .7em;
+  font-weight: 500;
 }
 
 .menu_content .menu_icon {
@@ -100,11 +140,21 @@ p, button {
   font-size: 1.75rem;
 }
 
+
+
+/* Styling of the introduction section of the page */
+
 .intro {
   background: #F0F4F9;
   text-align: center;
   padding-top: 2em;
   margin-top: 1em;
+}
+
+.hero_para {
+  font-weight: 700;
+  color: #002147;
+  font-size: 1.3rem;
 }
 
 .hero_image {
@@ -113,8 +163,9 @@ p, button {
 
 .hero_text .hero_head {
   margin-top: .5em;
+  font-size: 2rem;
+  font-weight: 400;
 }
-
 
 .hero_text .hero_action {
   display: flex;
@@ -128,7 +179,7 @@ p, button {
 }
 
 .hero_action .each_action .action_button {
-  padding: .4em 2em;
+  padding: .6em 2.4em;
   font-size: .8em;
   border-radius: 4px;
 }
@@ -136,19 +187,30 @@ p, button {
 .hero_action .each_action .signup {
   background: #FDC800;
   border: none;
+  font-weight: 500;
+  font-size: .7rem;
 }
 
 .hero_action .each_action .login {
   background: #FFFFFF;
   border: 1px solid #BDBDBD;
   border-width: thin;
+  font-weight: 500;
+  font-size: .7rem;
 }
+
+
+
+/* Styling of section Two of the page */
 
 .section_two {
   text-align: center;
   margin: 1em 0em 5em;
 }
 
+
+
+/* Styling of Section Three of the page */
 
 .section_three {
   text-align: center;
@@ -180,8 +242,6 @@ p, button {
 }
 
 .news_field .email_input {
-  /* display: block; */
-  /* max-width: 800px; */
   width: 100%;
   padding: 1.3em 18em 1.3em 1em;
   font-size: .5rem;
@@ -203,8 +263,74 @@ p, button {
   top: .2rem;
 }
 
+
+
+
+/* Styling of Section four of the page */
+
 .section_four {
   background: #002147;
+  padding: 2em 1.5em 0em;
+}
+
+.section_four .top_footer {
+  margin-bottom: 1.5em;
+}
+
+.left_footer .logo_text {
+  font-size: .8rem;
+  color: #FFFFFF;
+}
+
+.left_footer .left_contents {
+  display: flex;
+  align-items: center;
+  margin-top: 1em;
+}
+
+.left_footer .foot_icons {
+  margin-right: .5em;
+}
+
+.section_four .foot_text {
+  color: #FFFFFF;
+  font-size: .6rem;
+}
+
+.section_four .foot_head {
+  margin-top: 2em;
+  font-weight: 700;
+  color: #FFFFFF;
+  font-size: .8rem;
+}
+
+
+
+/* Styling of the footer extension of the page */
+
+.foot_extension {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: #FDC800;
+  padding: 1em 0em;
+}
+
+.foot_extension .ext_left {
+  display: flex;
+}
+
+.foot_extension .ext_left .ext_text {
+  font-size: .6rem;
+  color: #002147;
+}
+
+.ext_text + .ext_text {
+  margin-left: .5em;
+}
+
+.social_icon + .social_icon {
+  margin-left: .7em;
 }
 
 
