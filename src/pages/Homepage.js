@@ -1,6 +1,8 @@
 import React,{useState} from "react";
 import { Link } from "react-router-dom";
 import { Close, MenuOutlined } from "@mui/icons-material";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import book_logo from "../assets/book_logo.svg";
 import book_foot from "../assets/book_foot.svg";
 import Top_Banner from "../assets/Top_Banner.png";
@@ -116,11 +118,11 @@ const Homepage = () => {
 									<button className="signup_button">Register</button>
 								</Link>
 							</li>
-							{/* <li className="each_nav">
-						<Link to="/" className="nav_text">
-							Search
-						</Link>
-					</li> */}
+							<li className="each_nav">
+								<Link to="/" className="nav_text">
+									<FontAwesomeIcon icon={faMagnifyingGlass} className="search_icon" />
+								</Link>
+							</li>
 						</ul>
 					</div>
 				</div>

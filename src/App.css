@@ -116,6 +116,17 @@ p, button {
   font-weight: 500;
 }
 
+.each_nav {
+  background: #FFFFFF;
+  padding: .25em .5em;
+  border: 1px solid #BDBDBD;
+  border-radius: .25rem;
+}
+
+.each_nav .search_icon {
+  fill: #212529;
+}
+
 .menu_content .menu_icon {
   color: #002147;
   font-size: 3rem;
