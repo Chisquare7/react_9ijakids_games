@@ -17,6 +17,7 @@ import phone_icon from "../assets/phone_icon.png";
 import Newsletter from "../assets/Newsletter.png";
 import color_location_icon from "../assets/color_location_icon.png";
 import color_message_icon from "../assets/color_message_icon.png";
+import Games from '../games.json';
 
 const Homepage = () => {
 
@@ -25,6 +26,26 @@ const Homepage = () => {
   const showMenu = () => {
     setActive(!active)
   }
+
+  // const users = [];
+  // fetch(
+	// 	`https://partners.9ijakids.com/index.php?partnerId=555776&accessToken=l0lawtvv-94bv-oi4d-u808-5ubz&action=catalogfilter`
+	// )
+	// 	.then((response) => response.json())
+	// 	.then((data) => {
+	// 		console.log(data.results);
+	// 	});
+
+  // let url = {
+  //   "https://partners.9ijakids.com/index.php/thumbnail?game=Before and After",
+  //   "https://partners.9ijakids.com/index.php/thumbnail?game=Communication",
+  //   "https://partners.9ijakids.com/index.php/thumbnail?game=Kiddiepreneur 101",
+  //   "https://partners.9ijakids.com/index.php/thumbnail?game=Money Matters",
+  //   "https://partners.9ijakids.com/index.php/thumbnail?game=Maths Pop",
+  //   "https://partners.9ijakids.com/index.php/thumbnail?game=Exploring Life",
+  //   "https://partners.9ijakids.com/index.php/thumbnail?game=Mathsmania City - Decimals",
+  //   "https://partners.9ijakids.com/index.php/thumbnail?game=Literacy Hangman KS2",
+  // };
 
 
 	return (
@@ -164,7 +185,21 @@ const Homepage = () => {
 					<div>
 						<h2 className="section_subtitle">Popular Games</h2>
 					</div>
-					<div></div>
+          <div>
+            {
+              Games.map(game => {
+                return (
+                  <div className="game_box" key={ game.id }>
+                    <div>
+                      <img src={game.GameImage} alt="something" />
+                    </div>
+                    <div></div>
+                  </div>
+                )
+
+              } )
+            }
+          </div>
 				</div>
 			</section>
 
