@@ -183,19 +183,22 @@ const Homepage = () => {
 			<section className="section_two">
 				<div className="container">
 					<div>
-						<h2 className="section_subtitle">Popular Games</h2>
+						<h2 className="section_subtitle game_title">Popular Games</h2>
 					</div>
           <div>
             {
-              Games.map(game => {
+              Games && Games.map(game => {
                 return (
-                  <div className="game_box" key={ game.id }>
-                    <div>
-                      <img src={game.GameImage} alt="something" />
-                    </div>
-                    <div></div>
-                  </div>
-                )
+									<div className="game_box" key={game.id}>
+										<div className="game_img">
+											<img src={game.GameImage} alt="A type of kid's game" className="img_games" />
+										</div>
+										<div className="game_content">
+											<p className="game_head">{game.GameTitle}</p>
+											<p className="game_text">{game.GameDescription}</p>
+										</div>
+									</div>
+								);
 
               } )
             }

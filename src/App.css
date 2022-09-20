@@ -215,10 +215,48 @@ p, button {
 /* Styling of section Two of the page */
 
 .section_two {
-  text-align: center;
+  /* text-align: center; */
   margin: 1em 0em 5em;
 }
 
+.section_two .game_title {
+  text-align: center;
+}
+
+.game_box {
+  margin: 1.5em auto;
+  max-width: 65%;
+  width: 18rem;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #BDBDBD;
+  border-radius: .3rem;
+}
+
+.game_box .game_img .img_games{
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.game_content {
+  padding: 1em .5em;
+}
+
+.game_content .game_head {
+  font-weight: 700;
+  color: #002147;
+  font-size: .7rem;
+}
+
+.game_content .game_text {
+  font-size: .5rem;
+  font-weight: 400;
+  color: #757575;
+  margin-top: .5em;
+
+}
 
 
 /* Styling of Section Three of the page */
