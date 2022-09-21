@@ -28,50 +28,64 @@ const Homepage = () => {
     setActive(!active)
   }
 
+  const [search, setSearch] = useState("");
+
+  const onChange = (event) => {
+    setSearch(event.target.search);
+  }
+
+  const onSearch = (searchTerm) => {
+    setSearch(searchTerm);
+
+    console.log("search", searchTerm)
+  }
+
 	return (
 		<div>
 			<section className="nav_extension">
 				<div className="container">
-					<div className="navleft_ext">
-						<div className="navext_contents">
-							<img
-								src={color_location_icon}
-								alt="colored location icon"
-								className="asset_icon"
-							/>
-							<p className="navext_text">9ijakids lane, Lagos</p>
+					<div className="nav_extension_inner">
+						<div className="navleft_ext">
+							<div className="navext_contents content_one">
+								<img
+									src={color_location_icon}
+									alt="colored location icon"
+									className="asset_icon"
+								/>
+								<p className="navext_text">9ijakids lane, Lagos</p>
+							</div>
+							<div className="navext_contents">
+								<img
+									src={color_message_icon}
+									alt="colored message Icon"
+									className="asset_icon"
+								/>
+								<p className="navext_text">9ijakids@test.com</p>
+							</div>
 						</div>
-						<div className="navext_contents">
-							<img
-								src={color_message_icon}
-								alt="colored message Icon"
-								className="asset_icon"
-							/>
-							<p className="navext_text">9ijakids@test.com</p>
-						</div>
-					</div>
-					<div className="navright_ext">
-						<div className="ext_right">
-							<img
-								src={facebook_icon}
-								alt="facebook social"
-								className="fb_icon social_icon"
-							/>
-							<img
-								src={pinterest_icon}
-								alt="pinterest"
-								className="asset_icon social_icon"
-							/>
-							<img
-								src={twitter_icon}
-								alt="twitter social"
-								className="asset_icon social_icon"
-							/>
-							<img
-								src={instagram_icon}
-								alt="instagram social"
-								className="asset_icon social_icon"
-							/>
+						<div className="navright_ext">
+							<div className="ext_right">
+								<img
+									src={facebook_icon}
+									alt="facebook social"
+									className="fb_icon social_icon"
+								/>
+								<img
+									src={pinterest_icon}
+									alt="pinterest"
+									className="asset_icon social_icon"
+								/>
+								<img
+									src={twitter_icon}
+									alt="twitter social"
+									className="asset_icon social_icon"
+								/>
+								<img
+									src={instagram_icon}
+									alt="instagram social"
+									className="asset_icon social_icon"
+								/>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -129,14 +143,48 @@ const Homepage = () => {
 									</motion.button>
 								</Link>
 							</li>
-							<li className="each_nav">
-								<Link to="/" className="nav_text">
-									<FontAwesomeIcon
-										icon={faMagnifyingGlass}
-										className="search_icon"
+
+							<div className="search_container">
+								<div className="search_content">
+									<input
+										type="text"
+										name="search"
+										placeholder="search..."
+										className="search_field"
+										onChange={onChange}
 									/>
-								</Link>
-							</li>
+									<li className="each_nav">
+										<Link
+											to="/"
+											className="nav_text"
+											onClick={() => onSearch(search)}
+										>
+											<FontAwesomeIcon
+												icon={faMagnifyingGlass}
+												className="search_icon"
+											/>
+										</Link>
+									</li>
+								</div>
+								{/* <div className="dropdown">
+                  {Games.filter((data) => {
+                    const searchTerm = search.toLowerCase();
+                    const gameTopic = data.Topic.toLowerCase();
+
+                    return (
+                      searchTerm && gameTopic.startsWith(searchTerm) &&
+                      gameTopic !== searchTerm
+                    );
+                  })
+                    .slice(0, 10)
+                    .map((data) => (
+                      <div key={data.id}>
+                        <p>{ data.Topic }</p>
+                      </div>
+                    ))
+                  }
+                </div> */}
+							</div>
 						</ul>
 					</div>
 				</div>
@@ -144,47 +192,51 @@ const Homepage = () => {
 
 			<section className="intro">
 				<div className="container">
-					<div className="section_row hero_text">
-						<div className="section_col">
-							<p className="hero_para">Learning is Fun</p>
-							<h1 className="hero_head">
-								Learn New Skills Online Find Best Courses
-							</h1>
-						</div>
-						<div className="section_col hero_action">
-							<li className="each_action">
-								<Link to="/">
-									<motion.button
-										className="action_button signup"
-										whileHover={{ scale: 1.2 }}
-										whileTap={{ scale: 0.8 }}
-										animate={{ marginRight: 7 }}
-									>
-										Register
-									</motion.button>
-								</Link>
-							</li>
+					<div className="container_row hero_container">
+						<div className="container_col hero_text">
+							<div className="left_column">
+								<div className="left_col_heading">
+									<p className="hero_para">Learning is Fun</p>
+									<h1 className="hero_head">
+										Learn New Skills Online Find Best Courses
+									</h1>
+								</div>
+								<div className="left_col_text hero_action">
+									<li className="each_action">
+										<Link to="/">
+											<motion.button
+												className="action_button signup"
+												whileHover={{ scale: 1.2 }}
+												whileTap={{ scale: 0.8 }}
+												animate={{ marginRight: 7 }}
+											>
+												Register
+											</motion.button>
+										</Link>
+									</li>
 
-							<li className="each_action">
-								<Link to="/">
-									<motion.button
-										className="action_button login"
-										whileHover={{ scale: 1.2 }}
-										whileTap={{ scale: 0.8 }}
-										animate={{ marginRight: 7 }}
-									>
-										Login
-									</motion.button>
-								</Link>
-							</li>
+									<li className="each_action">
+										<Link to="/">
+											<motion.button
+												className="action_button login"
+												whileHover={{ scale: 1.2 }}
+												whileTap={{ scale: 0.8 }}
+												animate={{ marginRight: 7 }}
+											>
+												Login
+											</motion.button>
+										</Link>
+									</li>
+								</div>
+							</div>
+						</div>
+						<div className="hero_image container_col">
+							<img src={Top_Banner} alt="Top Banner" />
 						</div>
 					</div>
-					<div className="hero_image">
-						<img src={Top_Banner} alt="Top Banner" />
+					<div className="timer_img">
+						<img src={Timer} alt="Timer" />
 					</div>
-				</div>
-				<div>
-					<img src={Timer} alt="Timer" />
 				</div>
 			</section>
 
@@ -193,7 +245,7 @@ const Homepage = () => {
 					<div>
 						<h2 className="section_subtitle game_title">Popular Games</h2>
 					</div>
-					<div>
+					<div className="games_container">
 						{Games &&
 							Games.map((game) => {
 								return (
@@ -217,32 +269,34 @@ const Homepage = () => {
 			</section>
 
 			<section className="section_three">
-				<div className="container section_row">
-					<div className="section_col news_img">
-						<img src={Newsletter} alt="Newsletter" />
-					</div>
-					<div className="section_col news_contents">
-						<div className="top_col">
-							<p className="news_text">Subscrible now</p>
-							<h2 className="section_subtitle">Be in the know...</h2>
+				<div className="container">
+					<div className="subscribe_container">
+						<div className="subscribe_col news_img">
+							<img src={Newsletter} alt="Newsletter" />
 						</div>
-						<div className="bottom_col news_field">
-							<input
-								type="email"
-								placeholder="Enter email address"
-								className="email_input"
-							/>
-							<span className="subscribe_container">
-								<Link to="/">
-									<motion.button
-										className="subscribe_button"
-										whileTap={{ scale: 0.8 }}
-									>
-										Subscrible now
-									</motion.button>
-								</Link>
-							</span>
-							{/* <span className="msg_icon"></span> */}
+						<div className="subscribe_col news_contents">
+							<div className="top_col">
+								<p className="news_text">Subscrible now</p>
+								<h2 className="section_subtitle">Be in the know...</h2>
+							</div>
+							<div className="bottom_col news_field">
+								<input
+									type="email"
+									placeholder="Enter email address"
+									className="email_input"
+								/>
+								<span className="subscribe_container">
+									<Link to="/">
+										<motion.button
+											className="subscribe_button"
+											whileTap={{ scale: 0.8 }}
+										>
+											Subscrible now
+										</motion.button>
+									</Link>
+								</span>
+								{/* <span className="msg_icon"></span> */}
+							</div>
 						</div>
 					</div>
 				</div>
@@ -250,190 +304,194 @@ const Homepage = () => {
 
 			<section className="section_four">
 				<div className="container top_footer">
-					<div className="left_footer">
-						<div className="left_contents">
-							<img src={book_foot} alt="footer logo" className="foot_icons" />
-							<p className="logo_text">9IJAKIDS</p>
+					<div className="footer_container">
+						<div className="left_footer">
+							<div className="left_contents">
+								<img src={book_foot} alt="footer logo" className="foot_icons" />
+								<p className="logo_text">9IJAKIDS</p>
+							</div>
+							<div className="left_contents">
+								<img
+									src={location_icon}
+									alt="location"
+									className="asset_icon foot_icons"
+								/>
+								<p className="foot_text">9ijakids lane</p>
+							</div>
+							<div className="left_contents">
+								<img
+									src={message_icon}
+									alt="emails"
+									className="asset_icon foot_icons"
+								/>
+								<p className="foot_text">9ijakids@test.com</p>
+							</div>
+							<div className="left_contents">
+								<img
+									src={phone_icon}
+									alt="phone calls"
+									className="asset_icon foot_icons"
+								/>
+								<p className="foot_text">phone 9ijakids</p>
+							</div>
 						</div>
-						<div className="left_contents">
-							<img
-								src={location_icon}
-								alt="location"
-								className="asset_icon foot_icons"
-							/>
-							<p className="foot_text">9ijakids lane</p>
-						</div>
-						<div className="left_contents">
-							<img
-								src={message_icon}
-								alt="emails"
-								className="asset_icon foot_icons"
-							/>
-							<p className="foot_text">9ijakids@test.com</p>
-						</div>
-						<div className="left_contents">
-							<img
-								src={phone_icon}
-								alt="phone calls"
-								className="asset_icon foot_icons"
-							/>
-							<p className="foot_text">phone 9ijakids</p>
-						</div>
-					</div>
-					<div className="right_footer">
-						<div>
-							<p className="foot_head">Community</p>
-							<li className="foot_link">
-								<Link to="/" className="foot_text">
-									Learners
-								</Link>
-							</li>
-							<li className="foot_link">
-								<Link to="/" className="foot_text">
-									Partners
-								</Link>
-							</li>
-							<li className="foot_link">
-								<Link to="/" className="foot_text">
-									Developers
-								</Link>
-							</li>
-							<li className="foot_link">
-								<Link to="/" className="foot_text">
-									Beta Testers
-								</Link>
-							</li>
-							<li className="foot_link">
-								<Link to="/" className="foot_text">
-									Translators
-								</Link>
-							</li>
-							<li className="foot_link">
-								<Link to="/" className="foot_text">
-									Blog
-								</Link>
-							</li>
-							<li className="foot_link">
-								<Link to="/" className="foot_text">
-									Tech Blog
-								</Link>
-							</li>
-							<li className="foot_link">
-								<Link to="/" className="foot_text">
-									Teaching Center
-								</Link>
-							</li>
-						</div>
-						<div>
-							<p className="foot_head">Informations</p>
-							<li className="foot_link">
-								<Link to="/" className="foot_text">
-									About
-								</Link>
-							</li>
-							<li className="foot_link">
-								<Link to="/" className="foot_text">
-									Pricing
-								</Link>
-							</li>
-							<li className="foot_link">
-								<Link to="/" className="foot_text">
-									Blog
-								</Link>
-							</li>
-							<li className="foot_link">
-								<Link to="/" className="foot_text">
-									Careers
-								</Link>
-							</li>
-							<li className="foot_link">
-								<Link to="/" className="foot_text">
-									Contact
-								</Link>
-							</li>
-						</div>
-						<div>
-							<p className="foot_head">More</p>
-							<li className="foot_link">
-								<Link to="/" className="foot_text">
-									Press
-								</Link>
-							</li>
-							<li className="foot_link">
-								<Link to="/" className="foot_text">
-									Investors
-								</Link>
-							</li>
-							<li className="foot_link">
-								<Link to="/" className="foot_text">
-									Terms
-								</Link>
-							</li>
-							<li className="foot_link">
-								<Link to="/" className="foot_text">
-									Privacy
-								</Link>
-							</li>
-							<li className="foot_link">
-								<Link to="/" className="foot_text">
-									Help
-								</Link>
-							</li>
-							<li className="foot_link">
-								<Link to="/" className="foot_text">
-									Accessibilty
-								</Link>
-							</li>
-							<li className="foot_link">
-								<Link to="/" className="foot_text">
-									Contact
-								</Link>
-							</li>
-							<li className="foot_link">
-								<Link to="/" className="foot_text">
-									Articles
-								</Link>
-							</li>
-							<li className="foot_link">
-								<Link to="/" className="foot_text">
-									Directory
-								</Link>
-							</li>
-							<li className="foot_link">
-								<Link to="/" className="foot_text">
-									Affiliates
-								</Link>
-							</li>
+						<div className="right_footer">
+							<div>
+								<p className="foot_head">Community</p>
+								<li className="foot_link">
+									<Link to="/" className="foot_text">
+										Learners
+									</Link>
+								</li>
+								<li className="foot_link">
+									<Link to="/" className="foot_text">
+										Partners
+									</Link>
+								</li>
+								<li className="foot_link">
+									<Link to="/" className="foot_text">
+										Developers
+									</Link>
+								</li>
+								<li className="foot_link">
+									<Link to="/" className="foot_text">
+										Beta Testers
+									</Link>
+								</li>
+								<li className="foot_link">
+									<Link to="/" className="foot_text">
+										Translators
+									</Link>
+								</li>
+								<li className="foot_link">
+									<Link to="/" className="foot_text">
+										Blog
+									</Link>
+								</li>
+								<li className="foot_link">
+									<Link to="/" className="foot_text">
+										Tech Blog
+									</Link>
+								</li>
+								<li className="foot_link">
+									<Link to="/" className="foot_text">
+										Teaching Center
+									</Link>
+								</li>
+							</div>
+							<div>
+								<p className="foot_head">Informations</p>
+								<li className="foot_link">
+									<Link to="/" className="foot_text">
+										About
+									</Link>
+								</li>
+								<li className="foot_link">
+									<Link to="/" className="foot_text">
+										Pricing
+									</Link>
+								</li>
+								<li className="foot_link">
+									<Link to="/" className="foot_text">
+										Blog
+									</Link>
+								</li>
+								<li className="foot_link">
+									<Link to="/" className="foot_text">
+										Careers
+									</Link>
+								</li>
+								<li className="foot_link">
+									<Link to="/" className="foot_text">
+										Contact
+									</Link>
+								</li>
+							</div>
+							<div>
+								<p className="foot_head">More</p>
+								<li className="foot_link">
+									<Link to="/" className="foot_text">
+										Press
+									</Link>
+								</li>
+								<li className="foot_link">
+									<Link to="/" className="foot_text">
+										Investors
+									</Link>
+								</li>
+								<li className="foot_link">
+									<Link to="/" className="foot_text">
+										Terms
+									</Link>
+								</li>
+								<li className="foot_link">
+									<Link to="/" className="foot_text">
+										Privacy
+									</Link>
+								</li>
+								<li className="foot_link">
+									<Link to="/" className="foot_text">
+										Help
+									</Link>
+								</li>
+								<li className="foot_link">
+									<Link to="/" className="foot_text">
+										Accessibilty
+									</Link>
+								</li>
+								<li className="foot_link">
+									<Link to="/" className="foot_text">
+										Contact
+									</Link>
+								</li>
+								<li className="foot_link">
+									<Link to="/" className="foot_text">
+										Articles
+									</Link>
+								</li>
+								<li className="foot_link">
+									<Link to="/" className="foot_text">
+										Directory
+									</Link>
+								</li>
+								<li className="foot_link">
+									<Link to="/" className="foot_text">
+										Affiliates
+									</Link>
+								</li>
+							</div>
 						</div>
 					</div>
 				</div>
-				<div className="container foot_extension">
-					<div className="ext_left">
-						<p className="ext_text">test</p>
-						<p className="ext_text">test</p>
-						<p className="ext_text">test</p>
-					</div>
-					<div className="ext_right">
-						<img
-							src={facebook_icon}
-							alt="facebook social"
-							className="fb_icon social_icon"
-						/>
-						<img
-							src={pinterest_icon}
-							alt="pinterest"
-							className="asset_icon social_icon"
-						/>
-						<img
-							src={twitter_icon}
-							alt="twitter social"
-							className="asset_icon social_icon"
-						/>
-						<img
-							src={instagram_icon}
-							alt="instagram social"
-							className="asset_icon social_icon"
-						/>
+				<div className="container">
+					<div className="foot_extension">
+						<div className="ext_left">
+							<p className="ext_text">test</p>
+							<p className="ext_text">test</p>
+							<p className="ext_text">test</p>
+						</div>
+						<div className="ext_right">
+							<img
+								src={facebook_icon}
+								alt="facebook social"
+								className="fb_icon social_icon"
+							/>
+							<img
+								src={pinterest_icon}
+								alt="pinterest"
+								className="asset_icon social_icon"
+							/>
+							<img
+								src={twitter_icon}
+								alt="twitter social"
+								className="asset_icon social_icon"
+							/>
+							<img
+								src={instagram_icon}
+								alt="instagram social"
+								className="asset_icon social_icon"
+							/>
+						</div>
 					</div>
 				</div>
 			</section>
