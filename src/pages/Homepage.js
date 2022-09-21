@@ -1,5 +1,6 @@
 import React,{useState} from "react";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import { Close, MenuOutlined } from "@mui/icons-material";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
@@ -26,27 +27,6 @@ const Homepage = () => {
   const showMenu = () => {
     setActive(!active)
   }
-
-  // const users = [];
-  // fetch(
-	// 	`https://partners.9ijakids.com/index.php?partnerId=555776&accessToken=l0lawtvv-94bv-oi4d-u808-5ubz&action=catalogfilter`
-	// )
-	// 	.then((response) => response.json())
-	// 	.then((data) => {
-	// 		console.log(data.results);
-	// 	});
-
-  // let url = {
-  //   "https://partners.9ijakids.com/index.php/thumbnail?game=Before and After",
-  //   "https://partners.9ijakids.com/index.php/thumbnail?game=Communication",
-  //   "https://partners.9ijakids.com/index.php/thumbnail?game=Kiddiepreneur 101",
-  //   "https://partners.9ijakids.com/index.php/thumbnail?game=Money Matters",
-  //   "https://partners.9ijakids.com/index.php/thumbnail?game=Maths Pop",
-  //   "https://partners.9ijakids.com/index.php/thumbnail?game=Exploring Life",
-  //   "https://partners.9ijakids.com/index.php/thumbnail?game=Mathsmania City - Decimals",
-  //   "https://partners.9ijakids.com/index.php/thumbnail?game=Literacy Hangman KS2",
-  // };
-
 
 	return (
 		<div>
@@ -106,9 +86,13 @@ const Homepage = () => {
 							<p>9IJAKIDS</p>
 						</li>
 					</div>
-					<div className="menu_content">
+					<motion.div
+						className="menu_content"
+						whileHover={{ scale: 1.2 }}
+						whileTap={{ scale: 0.8 }}
+					>
 						<MenuOutlined className="menu_icon" onClick={showMenu} />
-					</div>
+					</motion.div>
 					<div className={active ? "right_nav active" : "right_nav"}>
 						<ul>
 							<div className="closed_content">
@@ -136,12 +120,21 @@ const Homepage = () => {
 							</li>
 							<li className="nav_signup">
 								<Link to="/">
-									<button className="signup_button">Register</button>
+									<motion.button
+										className="signup_button"
+										whileHover={{ scale: 1.2 }}
+										whileTap={{ scale: 0.8 }}
+									>
+										Register
+									</motion.button>
 								</Link>
 							</li>
 							<li className="each_nav">
 								<Link to="/" className="nav_text">
-									<FontAwesomeIcon icon={faMagnifyingGlass} className="search_icon" />
+									<FontAwesomeIcon
+										icon={faMagnifyingGlass}
+										className="search_icon"
+									/>
 								</Link>
 							</li>
 						</ul>
@@ -161,12 +154,27 @@ const Homepage = () => {
 						<div className="section_col hero_action">
 							<li className="each_action">
 								<Link to="/">
-									<button className="action_button signup">Register</button>
+									<motion.button
+										className="action_button signup"
+										whileHover={{ scale: 1.2 }}
+										whileTap={{ scale: 0.8 }}
+										animate={{ marginRight: 7 }}
+									>
+										Register
+									</motion.button>
 								</Link>
 							</li>
+
 							<li className="each_action">
 								<Link to="/">
-									<button className="action_button login">Login</button>
+									<motion.button
+										className="action_button login"
+										whileHover={{ scale: 1.2 }}
+										whileTap={{ scale: 0.8 }}
+										animate={{ marginRight: 7 }}
+									>
+										Login
+									</motion.button>
 								</Link>
 							</li>
 						</div>
@@ -185,13 +193,17 @@ const Homepage = () => {
 					<div>
 						<h2 className="section_subtitle game_title">Popular Games</h2>
 					</div>
-          <div>
-            {
-              Games && Games.map(game => {
-                return (
+					<div>
+						{Games &&
+							Games.map((game) => {
+								return (
 									<div className="game_box" key={game.id}>
 										<div className="game_img">
-											<img src={game.GameImage} alt="A type of kid's game" className="img_games" />
+											<img
+												src={game.GameImage}
+												alt="A type of kid's game"
+												className="img_games"
+											/>
 										</div>
 										<div className="game_content">
 											<p className="game_head">{game.GameTitle}</p>
@@ -199,10 +211,8 @@ const Homepage = () => {
 										</div>
 									</div>
 								);
-
-              } )
-            }
-          </div>
+							})}
+					</div>
 				</div>
 			</section>
 
@@ -224,7 +234,12 @@ const Homepage = () => {
 							/>
 							<span className="subscribe_container">
 								<Link to="/">
-									<button className="subscribe_button">Subscrible now</button>
+									<motion.button
+										className="subscribe_button"
+										whileTap={{ scale: 0.8 }}
+									>
+										Subscrible now
+									</motion.button>
 								</Link>
 							</span>
 							{/* <span className="msg_icon"></span> */}
@@ -232,6 +247,7 @@ const Homepage = () => {
 					</div>
 				</div>
 			</section>
+
 			<section className="section_four">
 				<div className="container top_footer">
 					<div className="left_footer">

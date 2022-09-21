@@ -82,6 +82,7 @@ p, button {
   right: -100%;
   background-color: #FDC800;
   transition: 1s ease;
+  z-index: 1;
 }
 
 .right_nav.active {
@@ -209,7 +210,6 @@ p, button {
   font-weight: 500;
   font-size: .7rem;
 }
-
 
 
 /* Styling of section Two of the page */
