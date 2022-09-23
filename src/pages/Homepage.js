@@ -2,8 +2,8 @@ import {React, useState} from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Close, MenuOutlined } from "@mui/icons-material";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 // import TextField from "@mui/material/TextField";
 // import IconButton from "@mui/material/IconButton";
 // import InputAdornment from "@mui/material/InputAdornment";
@@ -23,7 +23,7 @@ import Newsletter from "../assets/Newsletter.png";
 import color_location_icon from "../assets/color_location_icon.png";
 import color_message_icon from "../assets/color_message_icon.png";
 import Games from '../games.json';
-// import List from "../components/List";
+import Search from "../components/Search";
 
 
 
@@ -34,22 +34,6 @@ const Homepage = () => {
   
   const showMenu = () => {
     setActive(!active)
-  }
-
-  const [search, setSearch] = useState("");
-//   let inputHandler = (event) => {
-// 	var lowerCase = event.target.value.toLowerCase();
-// 	setSearch(lowerCase);
-//   }
-
-  const onChange = (event) => {
-    setSearch(event.target.search);
-  }
-
-  const onSearch = (searchTerm) => {
-    setSearch(searchTerm);
-
-    console.log("search", searchTerm)
   }
 
 	return (
@@ -108,7 +92,7 @@ const Homepage = () => {
 					<div className=" main_nav">
 						<Link className="main_logo">
 							<img src={book_logo} alt="main logo" className="page_logo" />
-							<p>9IJAKIDS</p>
+							<p className="main_logo_text">9IJAKIDS</p>
 						</Link>
 						<motion.div
 							className="menu_content"
@@ -155,53 +139,10 @@ const Homepage = () => {
 								</li>
 
 								<div className="search_content nav_items">
-									{/* <TextField
-										id="outlined-size-small"
-										onChange={inputHandler}
-										sx={{ width: 150 }}
-										variant="outlined"
-										fullWidth
-										size="small"
-										label="Search"
-										InputLabelProps={{ style: { fontSize: 10 } }}
-										IconProps={{ style: { fontSize: 5 } }}
-										InputProps={{
-											endAdornment: (
-												<InputAdornment>
-													<IconButton>
-														<SearchIcon />
-													</IconButton>
-												</InputAdornment>
-											),
-											style: { fontSize: 7 },
-										}}
-										className="search_field"
-									/> */}
+									
+									<Search details={Games}/>
 
-									<input
-										type="text"
-										name="search"
-										placeholder="search..."
-										className="search_field"
-										onChange={onChange}
-									/>
-									{Games.filter((post) => {
-										if (search === "") {
-											return post;
-										} else if (
-											post.Topic.toLowerCase().includes(search.toLowerCase())
-										) {
-											return post;
-										}
-										return false;
-									}).map((post, index) => (
-										<div className="search_box" key={index}>
-											<p className="search_items">{post.Topic}</p>
-											<p className="search_items">{post.Level}</p>
-											<p className="search_items">{post.Subject}</p>
-										</div>
-									))}
-									<li className="each_nav">
+									{/* <li className="each_nav">
 										<Link
 											to="/"
 											className="nav_text"
@@ -212,28 +153,9 @@ const Homepage = () => {
 												className="search_icon"
 											/>
 										</Link>
-									</li>
+									</li> */}
 								</div>
 
-								{/* <List input={search} /> */}
-								{/* <div className="dropdown">
-										{Games.filter((data) => {
-										const searchTerm = search.toLowerCase();
-										const gameTopic = data.Topic.toLowerCase();
-
-										return (
-										searchTerm && gameTopic.startsWith(searchTerm) &&
-										gameTopic !== searchTerm
-										);
-									})
-										.slice(0, 10)
-										.map((data) => (
-										<div key={data.id}>
-											<p>{ data.Topic }</p>
-										</div>
-										))
-									}
-									</div> */}
 							</ul>
 						</div>
 					</div>
