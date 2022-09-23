@@ -1,9 +1,13 @@
-import React,{useState} from "react";
+import {React, useState} from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Close, MenuOutlined } from "@mui/icons-material";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+// import TextField from "@mui/material/TextField";
+// import IconButton from "@mui/material/IconButton";
+// import InputAdornment from "@mui/material/InputAdornment";
+// import SearchIcon from "@mui/icons-material/Search";
 import book_logo from "../assets/book_logo.svg";
 import book_foot from "../assets/book_foot.svg";
 import Top_Banner from "../assets/Top_Banner.png";
@@ -19,6 +23,10 @@ import Newsletter from "../assets/Newsletter.png";
 import color_location_icon from "../assets/color_location_icon.png";
 import color_message_icon from "../assets/color_message_icon.png";
 import Games from '../games.json';
+// import List from "../components/List";
+
+
+
 
 const Homepage = () => {
 
@@ -29,6 +37,10 @@ const Homepage = () => {
   }
 
   const [search, setSearch] = useState("");
+//   let inputHandler = (event) => {
+// 	var lowerCase = event.target.value.toLowerCase();
+// 	setSearch(lowerCase);
+//   }
 
   const onChange = (event) => {
     setSearch(event.target.search);
@@ -92,60 +104,80 @@ const Homepage = () => {
 			</section>
 
 			<section className="nav_section">
-				<div className="container main_nav">
-					<div className="main_logo">
-						<img src={book_logo} alt="main logo" className="page_logo" />
-						<li>
-							<Link></Link>
+				<div className="container">
+					<div className=" main_nav">
+						<Link className="main_logo">
+							<img src={book_logo} alt="main logo" className="page_logo" />
 							<p>9IJAKIDS</p>
-						</li>
-					</div>
-					<motion.div
-						className="menu_content"
-						whileHover={{ scale: 1.2 }}
-						whileTap={{ scale: 0.8 }}
-					>
-						<MenuOutlined className="menu_icon" onClick={showMenu} />
-					</motion.div>
-					<div className={active ? "right_nav active" : "right_nav"}>
-						<ul>
-							<div className="closed_content">
-								<Close className="closed_icon" onClick={showMenu} />
-							</div>
-							<li>
-								<Link to="/" className="nav_text">
-									Home
-								</Link>
-							</li>
-							<li>
-								<Link to="/" className="nav_text">
-									About
-								</Link>
-							</li>
-							<li>
-								<Link to="/" className="nav_text">
-									Games
-								</Link>
-							</li>
-							<li>
-								<Link to="/" className="nav_text">
-									Competition
-								</Link>
-							</li>
-							<li className="nav_signup">
-								<Link to="/">
-									<motion.button
-										className="signup_button"
-										whileHover={{ scale: 1.2 }}
-										whileTap={{ scale: 0.8 }}
-									>
-										Register
-									</motion.button>
-								</Link>
-							</li>
+						</Link>
+						<motion.div
+							className="menu_content"
+							whileHover={{ scale: 1.2 }}
+							whileTap={{ scale: 0.8 }}
+						>
+							<MenuOutlined className="menu_icon" onClick={showMenu} />
+						</motion.div>
+						<div className={active ? "right_nav active" : "right_nav"}>
+							<ul>
+								<div className="closed_content">
+									<Close className="closed_icon" onClick={showMenu} />
+								</div>
+								<li className="nav_items">
+									<Link to="/" className="nav_text">
+										Home
+									</Link>
+								</li>
+								<li className="nav_items">
+									<Link to="/" className="nav_text">
+										About
+									</Link>
+								</li>
+								<li className="nav_items">
+									<Link to="/" className="nav_text">
+										Games
+									</Link>
+								</li>
+								<li className="nav_items">
+									<Link to="/" className="nav_text">
+										Competition
+									</Link>
+								</li>
+								<li className="nav_signup nav_items">
+									<Link to="/">
+										<motion.button
+											className="signup_button"
+											whileHover={{ scale: 1.2 }}
+											whileTap={{ scale: 0.8 }}
+										>
+											Register
+										</motion.button>
+									</Link>
+								</li>
 
-							<div className="search_container">
-								<div className="search_content">
+								<div className="search_content nav_items">
+									{/* <TextField
+										id="outlined-size-small"
+										onChange={inputHandler}
+										sx={{ width: 150 }}
+										variant="outlined"
+										fullWidth
+										size="small"
+										label="Search"
+										InputLabelProps={{ style: { fontSize: 10 } }}
+										IconProps={{ style: { fontSize: 5 } }}
+										InputProps={{
+											endAdornment: (
+												<InputAdornment>
+													<IconButton>
+														<SearchIcon />
+													</IconButton>
+												</InputAdornment>
+											),
+											style: { fontSize: 7 },
+										}}
+										className="search_field"
+									/> */}
+
 									<input
 										type="text"
 										name="search"
@@ -153,6 +185,22 @@ const Homepage = () => {
 										className="search_field"
 										onChange={onChange}
 									/>
+									{Games.filter((post) => {
+										if (search === "") {
+											return post;
+										} else if (
+											post.Topic.toLowerCase().includes(search.toLowerCase())
+										) {
+											return post;
+										}
+										return false;
+									}).map((post, index) => (
+										<div className="search_box" key={index}>
+											<p className="search_items">{post.Topic}</p>
+											<p className="search_items">{post.Level}</p>
+											<p className="search_items">{post.Subject}</p>
+										</div>
+									))}
 									<li className="each_nav">
 										<Link
 											to="/"
@@ -166,26 +214,28 @@ const Homepage = () => {
 										</Link>
 									</li>
 								</div>
-								{/* <div className="dropdown">
-                  {Games.filter((data) => {
-                    const searchTerm = search.toLowerCase();
-                    const gameTopic = data.Topic.toLowerCase();
 
-                    return (
-                      searchTerm && gameTopic.startsWith(searchTerm) &&
-                      gameTopic !== searchTerm
-                    );
-                  })
-                    .slice(0, 10)
-                    .map((data) => (
-                      <div key={data.id}>
-                        <p>{ data.Topic }</p>
-                      </div>
-                    ))
-                  }
-                </div> */}
-							</div>
-						</ul>
+								{/* <List input={search} /> */}
+								{/* <div className="dropdown">
+										{Games.filter((data) => {
+										const searchTerm = search.toLowerCase();
+										const gameTopic = data.Topic.toLowerCase();
+
+										return (
+										searchTerm && gameTopic.startsWith(searchTerm) &&
+										gameTopic !== searchTerm
+										);
+									})
+										.slice(0, 10)
+										.map((data) => (
+										<div key={data.id}>
+											<p>{ data.Topic }</p>
+										</div>
+										))
+									}
+									</div> */}
+							</ul>
+						</div>
 					</div>
 				</div>
 			</section>
@@ -198,7 +248,7 @@ const Homepage = () => {
 								<div className="left_col_heading">
 									<p className="hero_para">Learning is Fun</p>
 									<h1 className="hero_head">
-										Learn New Skills Online Find Best Courses
+										Learn New Skills Online <br /> Find Best Courses
 									</h1>
 								</div>
 								<div className="left_col_text hero_action">
@@ -231,11 +281,11 @@ const Homepage = () => {
 							</div>
 						</div>
 						<div className="hero_image container_col">
-							<img src={Top_Banner} alt="Top Banner" />
+							<img src={Top_Banner} alt="Top Banner" className="hero_img" />
 						</div>
 					</div>
 					<div className="timer_img">
-						<img src={Timer} alt="Timer" />
+						<img src={Timer} alt="Timer" className="timer_image" />
 					</div>
 				</div>
 			</section>
